@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Omicli - AI 3D STEP Generator</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+    body { background: #f7f7f8; color: #1c1c1c; display: flex; flex-direction: column; height: 100vh; }
+
+    header {
+      background: #ffffff;
+      color: #3a3a3a;
+      padding: 1rem 2rem;
+      font-size: 1.8rem;
+      font-weight: 700;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    header span { color: #7209b7; }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    model-viewer {
+      width: 30%;
+      min-width: 300px;
+      max-width: 600px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .input-panel {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #ffffff;
+      padding: 1rem 2rem;
+      display: flex;
+      gap: 0.5rem;
+      border-top: 1px solid #e0e0e0;
+      align-items: center;
+    }
+    .input-panel textarea {
+      flex: 1;
+      height: 50px;
+      padding: 0.8rem 1rem;
+      border-radius: 12px;
+      border: 1.5px solid #ccc;
+      resize: none;
+      font-size: 1rem;
+      transition: border 0.3s;
+    }
+    .input-panel textarea:focus {
+      outline: none;
+      border-color: #7209b7;
+      box-shadow: 0 0 8px rgba(114, 9, 183, 0.2);
+    }
+    .input-panel input[type="file"] {
+      border-radius: 12px;
+      border: 1.5px solid #ccc;
+      padding: 0.5rem;
+      background: #fff;
+      cursor: pointer;
+    }
+    .input-panel button {
+      background: #7209b7;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.2rem;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .input-panel button:hover {
+      background: #5a058c;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <header><span>Omicli</span> - AI 3D STEP Generator</header>
+
+  <main>
+    <!-- Replace with a GLB/GLTF version of the STEP file -->
+    <model-viewer 
+      src="https://raw.githubusercontent.com/soumbhat/omicli/main/airplaneprophub.glb" 
+      alt="Airplane Prop 3D Model" 
+      camera-controls 
+      auto-rotate 
+      background-color="#ffffff">
+    </model-viewer>
+  </main>
+
+  <div class="input-panel">
+    <textarea id="prompt" placeholder="Type your prompt here..."></textarea>
+    <input type="file" accept="image/*">
+    <button id="generateBtn">Generate</button>
+  </div>
+
+  <script>
+    const generateBtn = document.getElementById('generateBtn');
+    const promptArea = document.getElementById('prompt');
+
+    generateBtn.addEventListener('click', () => {
+      console.log("Generate clicked! (Backend not connected)");
+    });
+
+    promptArea.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        console.log("Enter pressed! (Backend not connected)");
+      }
+    });
+  </script>
+</body>
+</html>
