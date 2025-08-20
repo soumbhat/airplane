@@ -91,9 +91,8 @@
   <header><span>Omicli</span> - AI 3D STEP Generator</header>
 
   <main>
-    <!-- Replace with a GLB/GLTF version of the STEP file -->
     <model-viewer 
-      src="https://raw.githubusercontent.com/soumbhat/omicli/main/airplaneprophub.glb" 
+      src="" 
       alt="Airplane Prop 3D Model" 
       camera-controls 
       auto-rotate 
@@ -110,15 +109,21 @@
   <script>
     const generateBtn = document.getElementById('generateBtn');
     const promptArea = document.getElementById('prompt');
+    const modelViewer = document.querySelector('model-viewer');
 
+    // Raw GitHub GLB URL
+    const glbURL = "https://raw.githubusercontent.com/soumbhat/omicli/main/airplaneprophub.glb";
+
+    // Load GLB when clicking Generate
     generateBtn.addEventListener('click', () => {
-      console.log("Generate clicked! (Backend not connected)");
+      modelViewer.src = glbURL;
     });
 
+    // Load GLB when pressing Enter (without Shift)
     promptArea.addEventListener('keypress', function(e) {
       if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
-        console.log("Enter pressed! (Backend not connected)");
+        modelViewer.src = glbURL;
       }
     });
   </script>
